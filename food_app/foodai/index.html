@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comfort Cook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Comfort Cook</h1>
+    <p class="subtitle">Wholesome recipes from your ingredients.</p>
+
+    <div class="input-container">
+      <div class="input-group">
+        <label for="ingredients">What's in your pantry?</label>
+        <input type="text" id="ingredients" placeholder="e.g. Potatoes, Cheese, Thyme..." />
+      </div>
+
+      <div class="input-group">
+        <label for="mood">What are you craving?</label>
+        <div class="row" style="display:flex; gap:10px;">
+          <select id="mood" style="flex:1">
+            <option value="comfort">Warm Comfort Food</option>
+            <option value="quick">Quick & Easy</option>
+            <option value="healthy">Fresh & Healthy</option>
+            <option value="hearty">Hearty Family Meal</option>
+            <option value="snacks">Cozy Snacks</option>
+          </select>
+          <select id="meal-type" style="flex:1">
+            <option value="any">Any Meal</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Dietary Preferences</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" value="vegetarian"> Vegetarian</label>
+          <label class="checkbox-label"><input type="checkbox" value="vegan"> Vegan</label>
+          <label class="checkbox-label"><input type="checkbox" value="gluten-free"> Gluten-Free</label>
+          <label class="checkbox-label"><input type="checkbox" value="dairy-free"> Dairy-Free</label>
+        </div>
+      </div>
+
+      <button id="generate-btn">
+        Find a Recipe
+      </button>
+    </div>
+
+    <div id="result" class="result-card">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

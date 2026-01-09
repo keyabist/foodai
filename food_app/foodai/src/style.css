@@ -1,0 +1,295 @@
+:root {
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  /* User Provided Palette - Sweet Peony & Burnt Peach */
+  --bg-color: #E5D4CE;
+  /* Powder Petal */
+  --card-bg: #ffffff;
+
+  --primary-accent: #DE6E4B;
+  /* Burnt Peach */
+  --secondary-accent: #7FD1B9;
+  /* Pearl Aqua */
+  --text-color: #7A6563;
+  /* Taupe Grey */
+  --text-dim: #E56399;
+  /* Sweet Peony - used for special dim text/highlights */
+
+  --border-color: #f1e9d5;
+  /* Keeping this light beige for subtle borders */
+  --shadow: 0 10px 15px -3px rgba(122, 101, 99, 0.1), 0 4px 6px -2px rgba(122, 101, 99, 0.05);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  background-image: url('/bg.png');
+  background-repeat: repeat;
+  background-size: 400px;
+}
+
+#app {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 90%;
+  background: rgba(253, 246, 227, 0.95);
+  backdrop-filter: blur(5px);
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--primary-accent);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.input-group {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  background: #fafafa;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--secondary-accent);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(122, 101, 99, 0.1);
+}
+
+/* Fix for dropdown options visibility */
+option {
+  background-color: white;
+  color: var(--text-color);
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(222, 110, 75, 0.2);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-color: #c55e3d;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.result-card {
+  margin-top: 3rem;
+  padding: 3rem;
+  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px dashed var(--secondary-accent);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  box-shadow: var(--shadow);
+}
+
+.result-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dish-name {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.dish-desc {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.dish-reason {
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--secondary-accent);
+  background: #f0f7f4;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Loading animation - Simple Pulse */
+.loader {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 10px;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* NEW STYLES for V2 Features */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.checkbox-label input {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0;
+  accent-color: var(--primary-accent);
+}
+
+/* Recipe Card Styling */
+.recipe-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-row {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.ingredients-section h3,
+.steps-section h3 {
+  font-family: var(--font-heading);
+  color: var(--secondary-accent);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-accent);
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+.ingredients-list-detail {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-color);
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.ingredient-item .amount {
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin-right: 1rem;
+}
+
+.steps-list {
+  padding-left: 1.2rem;
+}
+
+.step-item {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
